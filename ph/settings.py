@@ -120,3 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # 运行后会在product_hunt文件中创建一个static文件搜集内容
+
+STATIC_DIRS = [
+    os.path.join(BASE_DIR, 'products/static'),
+]
