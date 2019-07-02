@@ -1,3 +1,13 @@
+<!--<h1>这是主页</h1>
+
+{% for gallery in gallerys.all %}
+{{ gallery.description }}
+{{ gallery.image.url }}  
+<img src="{{ gallery.image.url }}">
+{% endfor %} -->
+
+
+
 <!doctype html>
 <html lang="en">
   {% load staticfiles %}
@@ -18,26 +28,38 @@
   </head>
 
   <body>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-         <a class="navbar-brand" href="#">
-         <!-- 读取静态文件 -->
-         <img src=" {% static 'logo_P.png' %} " height=30>  
-         Product Hunt
-         </a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="{% url '主页' %}">
+            <img src=" {% static 'logo_P.png' %} "height=30>           
+          Product Hunt
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <!-- navbar-nav ml-auto 标题移动到右边 -->
-             <a class="nav-item nav-link" href="#">登陆</a>
-             <!-- 给网址起名字叫'注册页面' -->
-             <a class="nav-item nav-link" href="{% url '注册页面' %}" tabindex="-1" aria-disabled="true">注册</a>
-             </div>
-         </div>
-     </nav>
-    {% block content %}    
+              
+              <!-- 如果已经登陆，就显示退出按钮 -->
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="Javascript:{document.getElementById('退出').submit()}">退出</a>
+              <form id='退出' method="POST" action=' {% url "退出页面" %} '>
+                  <!-- csrf 防止网站攻击 -->
+                  {% csrf_token %}
+                  <!-- class="btn btn-primary"修改按钮样式 -->
+              <input type="hidden">
+              </form>
+              {% else %}
+              <a class="nav-item nav-link" href="{% url '登陆页面' %}">登陆</a>
+              <a class="nav-item nav-link" href="{% url '注册页面' %}">注册</a>
+              {% endif %}
+                
+              
+            </div>
+          </div>
+      </nav>
     
+    {% block content %}
+      
     {% endblock content %}
 
     <footer class="text-muted">

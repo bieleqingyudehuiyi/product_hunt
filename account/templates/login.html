@@ -1,0 +1,25 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+<!-- align='center'用于居中 -->
+<h2 align='center'>登陆Product Hunt</h2>
+<br>
+<form method="POST" action=' {% url "登陆页面" %} ' align='center'>
+    <!-- csrf 防止网站攻击 -->
+    {% csrf_token %}
+    用户名：
+    <br>
+    <input type="text" name='用户名'>
+    <br>
+    <br>
+    密码：
+    <br>
+    <input type="password" name='密码'>
+    <br>
+    {{ 错误 }}
+    <br>
+    <!-- class="btn btn-primary"修改按钮样式 -->
+    <input class="btn btn-primary" type="submit" value="登陆">
+</form>
+
+{% endblock content %}
