@@ -7,19 +7,19 @@
 <form method="POST" action=' {% url "发布页面" %} ' align='center' enctype='multipart/form-data'>
     <!-- csrf 防止网站攻击 -->
     {% csrf_token %}
-    APP名称：
+    标题：
     <br>
-    <input type="text" name='APP名称'>
+    <input type="text" name='标题' value='例：抖音-用短视频记录美好生活'>
     <br>
     <br>
     介绍：
     <br>
-    <textarea cols=100 rows=10 name='介绍'></textarea>>
+    <textarea cols=100 rows=10 name='介绍'>在这里写app介绍</textarea>>
     <br>
     <br>
     APP链接：
     <br>
-    <input type="text" name='APP链接'>
+    <input type="text" name='APP链接' value='http://'>
     <br>
     <br>
     APP图标(缩略图):
@@ -27,8 +27,9 @@
     <br>
     <br>
     　　　　大图：
-    <input type="file" name='APP图标'>
+    <input type="file" name='大图'>
     <br>
+    {{ 错误 }}
     <br>
     <input class='btn btn-primary' type="submit" valur='发布'>
 </form>

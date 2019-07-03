@@ -126,3 +126,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # 运行后会在product_hunt文
 STATIC_DIRS = [
     os.path.join(BASE_DIR, 'products/static'),
 ]
+MEDIA_URL = '/media/'  # 媒体文件网址
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
