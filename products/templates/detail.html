@@ -2,20 +2,17 @@
 
 {% block content %}
 
-<div class='container'>
-{% for product in products.all %}
+<div class='container'> 
     <div class='row'>
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{ product.icon.url }}" alt="Card image cap">
         </div>
         <div calss='col-md-8' style='padding-left:30px'>
-            <h3><a href='products/{{ product.id }}'>{{ product.title }}</a></h3>
+            <h3><a href='products/s{{ product.id }}'>{{ product.title }}</a></h3>
             <br>
             {{ product.intro }}
         </div>>
     </div>>
-{% endfor %}
-
 </div>
 
 {% endblock content %}
